@@ -11,11 +11,13 @@ if (isset($_GET["type"])) {
 if (isset($_POST["func"])) {
     switch($_POST["func"]) {
         case "generateAllPeople":
-            $InitRunFlt = microtime(true);
+            $InitRunFlt = microtime(true); // Start run time
+        
             $NewPersonObj = new Person();
             $ResultObj = $NewPersonObj->generatePeople($ItemsArr);
-            $EndRunFlt = microtime(true);
-            $ExecutionTimeFlt = ($EndRunFlt - $InitRunFlt);
+        
+            $EndRunFlt = microtime(true); // End run time
+            $ExecutionTimeFlt = ($EndRunFlt - $InitRunFlt); // Total execution time
             echo json_encode($ExecutionTimeFlt);
         break;
         case "deleteAllPeople":
